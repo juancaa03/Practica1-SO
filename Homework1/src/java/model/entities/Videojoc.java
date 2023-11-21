@@ -17,17 +17,18 @@ import java.util.List;
 
 @Entity
 public class Videojoc {
+    @SequenceGenerator(name="Videojoc_Gen", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Videojoc_Gen")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nom;
     private String videoconsola;
     private boolean disponibilitat;
     private double preuLloguer;
-    
-    @OneToOne(mappedBy = "videojoc")
-    private InfoVideojoc infoVideojoc;
+    private String descripcio;
+    private String tipus;
+    private String adrecaBotigues;
 
     @OneToMany(mappedBy = "videojoc")
     private List<Lloguer> lloguers;
@@ -38,11 +39,14 @@ public class Videojoc {
     }
 
     // Constructor con parámetros
-    public Videojoc(String nom, String videoconsola, boolean disponibilitat, double preuLloguer) {
+    public Videojoc(String nom, String videoconsola, boolean disponibilitat, double preuLloguer, String descripcio, String tipus, String adrecaBotigues) {
         this.nom = nom;
         this.videoconsola = videoconsola;
         this.disponibilitat = disponibilitat;
         this.preuLloguer = preuLloguer;
+        this.tipus = tipus;
+        this.descripcio = descripcio;
+        this.adrecaBotigues = adrecaBotigues;
     }
 
     public Long getId() {

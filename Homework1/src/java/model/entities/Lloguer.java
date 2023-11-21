@@ -8,9 +8,13 @@ import java.time.LocalDate;
 
 @Entity
 public class Lloguer {
+    @SequenceGenerator(name="Lloguer_Gen", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Lloguer_Gen")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    private LocalDate dataInici;
+    private LocalDate dataFi;
 
     @ManyToOne
     @JoinColumn(name = "videojoc_id", nullable = false)
@@ -19,9 +23,6 @@ public class Lloguer {
     @ManyToOne
     @JoinColumn(name = "usuari_id", nullable = false)
     private Usuari usuari;
-
-    private LocalDate dataInici;
-    private LocalDate dataFi;
     
     // Constructores
     public Lloguer() {
@@ -34,4 +35,46 @@ public class Lloguer {
         this.dataInici = dataInici;
         this.dataFi = dataFi;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getDataInici() {
+        return dataInici;
+    }
+
+    public void setDataInici(LocalDate dataInici) {
+        this.dataInici = dataInici;
+    }
+
+    public LocalDate getDataFi() {
+        return dataFi;
+    }
+
+    public void setDataFi(LocalDate dataFi) {
+        this.dataFi = dataFi;
+    }
+
+    public Videojoc getVideojoc() {
+        return videojoc;
+    }
+
+    public void setVideojoc(Videojoc videojoc) {
+        this.videojoc = videojoc;
+    }
+
+    public Usuari getUsuari() {
+        return usuari;
+    }
+
+    public void setUsuari(Usuari usuari) {
+        this.usuari = usuari;
+    }
+    
+    
 }
