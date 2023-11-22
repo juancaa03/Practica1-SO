@@ -23,26 +23,10 @@ public class UsuariFacadeREST extends AbstractFacade<Usuari> {
     public UsuariFacadeREST() {
         super(Usuari.class);
     }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Usuari> findAll() {
-        // Implementa la lógica para obtener la lista de usuarios
-    }
-
-    @GET
-    @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Usuari find(@PathParam("id") Integer id) {
-        // Implementa la lógica para obtener un usuario por ID
-    }
-
-    @PUT
-    @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void edit(@PathParam("id") Integer id, Usuari entity) {
-        // Implementa la lógica para modificar un usuario
-    }
     
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
     // Otros métodos opcionales según las especificaciones
 }

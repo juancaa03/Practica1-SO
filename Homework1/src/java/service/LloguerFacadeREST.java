@@ -14,7 +14,7 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
 @Stateless
-@Path("rest/api/v1/lloguer")
+@Path("lloguer")
 public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
 
     @PersistenceContext(unitName = "Homework1PU")
@@ -23,20 +23,9 @@ public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
     public LloguerFacadeREST() {
         super(Lloguer.class);
     }
-
-    @GET
-    @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Lloguer find(@PathParam("id") Integer id) {
-        return super.find(id);
-    }
-
-    @POST
-    @Path("/rental")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public RentalResponse rentGames(List<Integer> gameIds) {
-        // Implementa la lógica para formalizar el lloguer y retorna la respuesta adecuada
-    }
     
-    // Otros métodos opcio
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+}
