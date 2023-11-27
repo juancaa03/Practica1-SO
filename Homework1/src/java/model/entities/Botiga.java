@@ -4,6 +4,7 @@
  */
 package model.entities;
 import jakarta.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Botiga {
@@ -18,13 +19,22 @@ public class Botiga {
     @JoinColumn(name = "videojoc_id")
     private Videojoc videojoc;
 
+    public Botiga(){
+        //Constructor per defecte
+    }
+    
+    public Botiga(String nom, String adreca){
+        this.nom = nom;
+        this.adreca = adreca;
+    }
+    
     public Long getId() {
         return Id;
     }
 
-    /*public void setId(Long Id) {
+    public void setId(Long Id) {
         this.Id = Id;
-    }*/
+    }
 
     public String getNom() {
         return nom;
@@ -50,5 +60,20 @@ public class Botiga {
         this.videojoc = videojoc;
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Botiga botiga = (Botiga) o;
+        return Objects.equals(Id, botiga.Id) &&
+                Objects.equals(nom, botiga.nom) &&
+                Objects.equals(adreca, botiga.adreca) &&
+                Objects.equals(videojoc, botiga.videojoc);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Id, nom, adreca, videojoc);
+    }
     
 }

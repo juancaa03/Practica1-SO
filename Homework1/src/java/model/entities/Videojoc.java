@@ -14,6 +14,7 @@ import jakarta.persistence.SequenceGenerator;*/
 //import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Videojoc {
@@ -89,5 +90,23 @@ public class Videojoc {
         this.preuLloguer = preuLloguer;
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Videojoc videojoc = (Videojoc) o;
+        return disponibilitat == videojoc.disponibilitat &&
+                Double.compare(videojoc.preuLloguer, preuLloguer) == 0 &&
+                Objects.equals(id, videojoc.id) &&
+                Objects.equals(nom, videojoc.nom) &&
+                Objects.equals(videoconsola, videojoc.videoconsola) &&
+                Objects.equals(descripcio, videojoc.descripcio) &&
+                Objects.equals(tipus, videojoc.tipus) &&
+                Objects.equals(adrecaBotigues, videojoc.adrecaBotigues);
+    }
     
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nom, videoconsola, disponibilitat, preuLloguer, descripcio, tipus, adrecaBotigues);
+    }
 }

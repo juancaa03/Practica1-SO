@@ -5,6 +5,7 @@
 package model.entities;
 import jakarta.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Usuari {
@@ -14,7 +15,7 @@ public class Usuari {
     private Long id;
 
     private String nomUsuari, contrasenya, correu;
-    
+
     @OneToMany(mappedBy = "usuari")
     private List<Lloguer> lloguers;
 
@@ -24,7 +25,8 @@ public class Usuari {
     }
 
     // Constructor con parámetros
-    public Usuari(String nomUsuari, String contrasenya, String correu) {
+    public Usuari(Long id, String nomUsuari, String contrasenya, String correu) {
+        this.id = id;
         this.nomUsuari = nomUsuari;
         this.contrasenya = contrasenya;
         this.correu = correu;
@@ -45,7 +47,15 @@ public class Usuari {
     public void setNomUsuari(String nomUsuari) {
         this.nomUsuari = nomUsuari;
     }
+    
+    public String getContrasenya() {
+        return contrasenya;
+    }
 
+    public void setContrasenya(String contrasenya) {
+        this.contrasenya = contrasenya;
+    }
+    
     public String getCorreu() {
         return correu;
     }
@@ -62,5 +72,19 @@ public class Usuari {
         this.lloguers = lloguers;
     }
     
-    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuari usuari = (Usuari) o;
+        return Objects.equals(id, usuari.id) &&
+                Objects.equals(nomUsuari, usuari.nomUsuari) &&
+                Objects.equals(contrasenya, usuari.contrasenya) &&
+                Objects.equals(correu, usuari.correu);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nomUsuari, contrasenya, correu);
+    }
 }
