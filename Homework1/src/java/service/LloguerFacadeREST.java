@@ -13,7 +13,10 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import model.entities.*;
 
 @Stateless
 @Path("lloguer")
@@ -30,25 +33,25 @@ public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
     @Secured
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createSale(@QueryParam("store") String store, SaleRequest saleReq){
-        Sale newSale = new Sale();
-        Customer cust = em.find(Customer.class, saleReq.getCustomerId());
+        Lloguer newSale = new Lloguer();
+        Usuari cust = em.find(Usuari.class, saleReq.getCustomerId());
         if(cust == null) return Response.status(Response.Status.NOT_FOUND).entity("Customer not found").build();
-        Store store2 = findStore(store);
+        Botiga store2 = findStore(store);
         if(store2 == null) return Response.status(Response.Status.NOT_FOUND).entity("Store not found").build();
         
-        Collection<ProductSale> auxProductList = new ArrayList<>();
+        Collection<Lloguer> auxProductList = new ArrayList<>();
         for(SaleRequestUnit saleReqUnit : saleReq.getProducts()){
-            Product auxProduct = store2.findProduct(saleReqUnit.getProductId());
+            Videojoc auxProduct = store2.findProduct(saleReqUnit.getProductId());
             if(auxProduct == null) return Response.status(Response.Status.NOT_FOUND).entity("Product not found in store").build();
-            ProductSale auxProductSale = 
-                    new ProductSale(auxProduct, newSale, saleReqUnit.getQuantity(), saleReqUnit.getSize(), saleReqUnit.getSweetener());
+            RebutLloguer auxProductSale = 
+                    new RebutLloguer(auxProduct, newSale, saleReqUnit.getQuantity(), saleReqUnit.getSize(), saleReqUnit.getSweetener());
             auxProductList.add(auxProductSale);
             em.persist(auxProductSale);
         }
         
-        newSale.setCust(cust);
-        newSale.setStore(store2);
-        newSale.setProducts(auxProductList);
+        newSale.setUsuari(cust);
+        newSale.setBotiga(store2);
+        newSale.setVideojoc((Videojoc) auxProductList);
 
         em.persist(newSale);
         return Response.status(Response.Status.CREATED).build();
@@ -59,12 +62,22 @@ public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
     @Secured
     @Path("{id}")
     public Response getSale(@PathParam("id") Long id) {
-        Sale sl = em.find(Sale.class, id);
+        Lloguer sl = em.find(Lloguer.class, id);
         if(sl == null) return Response.status(Response.Status.NOT_FOUND).build();
-        Customer tempCust = sl.getCust();
-        sl.setCust(tempCust);
+        Usuari tempCust = sl.getUsuari();
+        sl.setUsuari(tempCust);
         
         return Response.ok().entity(sl).build();
+    }
+    
+    public Botiga findStore(String cityName){
+        try{
+            Botiga s = (Botiga) em.createNamedQuery("Store.findStoreByName").setParameter("cityName", cityName).getSingleResult();
+            return s;
+        }
+        catch(Exception e){
+            return null;
+        }
     }
     
     @Override
