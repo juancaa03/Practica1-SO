@@ -29,7 +29,7 @@ public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
         super(Lloguer.class);
     }
     
-    @POST
+    /*@POST
     @Secured
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createSale(@QueryParam("store") String store, SaleRequest saleReq){
@@ -55,7 +55,7 @@ public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
 
         em.persist(newSale);
         return Response.status(Response.Status.CREATED).build();
-    }
+    }*/
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
