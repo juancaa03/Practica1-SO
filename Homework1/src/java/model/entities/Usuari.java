@@ -4,17 +4,21 @@
  */
 package model.entities;
 import jakarta.persistence.*;
+//  import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Usuari {
+@NamedQuery(name="Customer.allCustomers", query = "SELECT e FROM Usuari e" )
+public class Usuari{
     @SequenceGenerator(name="Usuari_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Usuari_Gen")
     @Id
     private Long id;
 
-    private String nomUsuari, contrasenya, correu;
+    private String nomUsuari, correu;
+    
+    private String contrasenya;
 
     @OneToMany(mappedBy = "usuari")
     private List<Lloguer> lloguers;
@@ -47,6 +51,7 @@ public class Usuari {
     public void setNomUsuari(String nomUsuari) {
         this.nomUsuari = nomUsuari;
     }
+    
     
     public String getContrasenya() {
         return contrasenya;

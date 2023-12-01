@@ -18,6 +18,7 @@ import java.util.List;
 
 @Stateless
 @Path("rest/api/v1/ususari")
+
 public class UsuariFacadeREST extends AbstractFacade<Usuari> {
 
     @PersistenceContext(unitName = "Homework1PU")

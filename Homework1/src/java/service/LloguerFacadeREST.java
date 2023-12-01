@@ -19,7 +19,7 @@ import java.util.List;
 import model.entities.*;
 
 @Stateless
-@Path("lloguer")
+@Path("rest/api/v1/rental")
 public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
 
     @PersistenceContext(unitName = "Homework1PU")
