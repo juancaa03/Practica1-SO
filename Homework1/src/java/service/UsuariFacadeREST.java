@@ -15,9 +15,18 @@ import jakarta.ws.rs.core.GenericEntity;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import authn.Secured;
+import jakarta.ws.rs.QueryParam;
+
 
 @Stateless
-@Path("rest/api/v1/ususari")
+@Path("/rest/api/v1/usuari")
 
 public class UsuariFacadeREST extends AbstractFacade<Usuari> {
 
@@ -48,7 +57,7 @@ public class UsuariFacadeREST extends AbstractFacade<Usuari> {
     @PUT
     @Path("{id}")
     @Secured
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public Response updateCustomer(@PathParam("id") Long id, Usuari newCustData) {
         Usuari cust = em.find(Usuari.class, id);
         if(cust == null) return Response.status(Response.Status.NOT_FOUND).build();
