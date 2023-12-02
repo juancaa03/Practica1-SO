@@ -4,12 +4,13 @@
  */
 package model.entities;
 import jakarta.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 @Entity
-public class Lloguer {
+public class Lloguer implements Serializable{
     @SequenceGenerator(name="Lloguer_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Lloguer_Gen")
     @Id

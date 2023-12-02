@@ -13,11 +13,12 @@ import jakarta.persistence.SequenceGenerator;*/
 //import jakarta.validation.constraints.NotNull;
 //import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Videojoc {
+public class Videojoc implements Serializable{
     @SequenceGenerator(name="Videojoc_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Videojoc_Gen")
     @Id

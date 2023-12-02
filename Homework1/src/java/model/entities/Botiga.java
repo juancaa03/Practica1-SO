@@ -4,10 +4,11 @@
  */
 package model.entities;
 import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Botiga {
+public class Botiga implements Serializable{
     @SequenceGenerator(name="Botiga_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Botiga_Gen")
     @Id

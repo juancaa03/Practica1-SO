@@ -3,14 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model.entities;
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
+import java.io.Serializable;
 //  import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @NamedQuery(name="Customer.allCustomers", query = "SELECT e FROM Usuari e" )
-public class Usuari{
+public class Usuari implements Serializable{
     @SequenceGenerator(name="Usuari_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Usuari_Gen")
     @Id
@@ -21,6 +23,7 @@ public class Usuari{
     private String contrasenya;
 
     @OneToMany(mappedBy = "usuari")
+    @JsonbTransient
     private List<Lloguer> lloguers;
 
     // Constructores
