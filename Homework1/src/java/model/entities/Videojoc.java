@@ -22,6 +22,7 @@ public class Videojoc implements Serializable{
     @SequenceGenerator(name="Videojoc_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Videojoc_Gen")
     @Id
+    @Column(name = "id")
     private Long id;
 
     private String nom;

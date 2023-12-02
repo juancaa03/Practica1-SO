@@ -14,6 +14,7 @@ public class Lloguer implements Serializable{
     @SequenceGenerator(name="Lloguer_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Lloguer_Gen")
     @Id
+    @Column(name = "id")
     private Long id;
     
     private LocalDate dataInici;

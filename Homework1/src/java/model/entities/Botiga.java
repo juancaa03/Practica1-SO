@@ -12,6 +12,7 @@ public class Botiga implements Serializable{
     @SequenceGenerator(name="Botiga_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Botiga_Gen")
     @Id
+    @Column(name = "id")
     private Long Id;
     private String nom;
     private String adreca;

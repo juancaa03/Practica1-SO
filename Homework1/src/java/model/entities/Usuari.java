@@ -16,10 +16,11 @@ public class Usuari implements Serializable{
     @SequenceGenerator(name="Usuari_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Usuari_Gen")
     @Id
+    @Column(name = "id")
     private Long id;
 
     private String nomUsuari, correu;
-    
+    @JsonbTransient
     private String contrasenya;
 
     @OneToMany(mappedBy = "usuari")

@@ -11,7 +11,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Credentials implements Serializable { 
     @Id
     @SequenceGenerator(name="Credentials_Gen", allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Credentials_Gen") 
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Credentials_Gen")
+    @Column(name = "id")
     private Long id;
     @Column(unique=true)
     @NotNull(message="Username can't be null")
