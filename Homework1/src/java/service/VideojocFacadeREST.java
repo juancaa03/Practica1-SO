@@ -15,6 +15,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import model.entities.Videojoc;
 import authn.Secured;
+import jakarta.persistence.TypedQuery;
 import jakarta.ws.rs.core.Response;
 
 @Stateless
@@ -28,20 +29,55 @@ public class VideojocFacadeREST extends AbstractFacade<Videojoc> {
         super(Videojoc.class);
     }
     
-    @GET
+    /*@GET
     @Secured
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response find(@PathParam("id") Long id) {
         return Response.ok().entity(super.find(id)).build();
-    }
+    }*/
     
     @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAllVideojocs() {
+        try {
+            // Utiliza una consulta para obtener todos los videojuegos ordenados por nombre
+            TypedQuery<Videojoc> query = em.createQuery("SELECT v FROM Videojoc v ORDER BY v.nom", Videojoc.class);
+            List<Videojoc> videojocs = query.getResultList();
+            return Response.ok(videojocs).build();
+        } catch (Exception e) {
+            // Manejar la excepción y devolver el código de error correspondiente
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error al obtener los videojuegos").build();
+        }
+    }
+    
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Secured
+    public Response addVideojoc(Videojoc videojoc) {
+        try {
+            // Verificar si el videojuego ya existe
+            if (videojoc.equals(videojoc)) {
+                return Response.status(Response.Status.CONFLICT).entity("El videojuego ya existe").build();
+            }
+
+            // Si no existe, persistir el nuevo videojuego
+            create(videojoc);
+
+            // Devolver el código de estado 201 Created
+            return Response.status(Response.Status.CREATED).build();
+        } catch (Exception e) {
+            // Manejar la excepción y devolver el código de error correspondiente
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error al agregar el videojuego").build();
+        }
+    }
+    
+    /*@GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Videojoc> findAll() {
         return super.findAll();
-    }
+    }*/
     
     @Override
     protected EntityManager getEntityManager() {

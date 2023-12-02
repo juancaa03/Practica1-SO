@@ -28,7 +28,7 @@ public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
         super(Lloguer.class);
     }
     
-        @GET
+    @GET
     @Secured
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -36,7 +36,10 @@ public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
         return Response.ok().entity(super.find(id)).build();
     }
     
+    //NO DICE NADA DE QUE TENGA QUE SER XML O JSON, igual hay que poner text/plain
+    
     @GET
+    @Secured
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Lloguer> findAll() {
