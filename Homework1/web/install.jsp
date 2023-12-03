@@ -49,11 +49,13 @@
                 "INSERT INTO " + schema + ".VIDEOJOC VALUES (NEXT VALUE FOR Videojoc_Gen, 'Quake', 'PC', 0, 15.99, 'Juego de acción en primera persona', 'Acción', 'Game Haven, Calle de Ejemplo 123, Ciudad, 12345')",
                 "INSERT INTO " + schema + ".VIDEOJOC VALUES (NEXT VALUE FOR Videojoc_Gen, 'The Legend of Zelda', 'Nintendo Entertainment System', 1, 12.99, 'Aventura épica', 'Aventura', 'Gamer Paradise, Av. Principal 456, Pueblo, 56789')",
                 //Lloguer (id, dataFi, dataInici, usuari_id, videojoc_id)
-                "INSERT INTO " + schema + ".LLOGUER VALUES (NEXT VALUE FOR Lloguer_Gen, )",
-                "INSERT INTO " + schema + ".LLOGUER VALUES (NEXT VALUE FOR Lloguer_Gen, )",
-                "INSERT INTO " + schema + ".LLOGUER VALUES (NEXT VALUE FOR Lloguer_Gen, )",
-                "INSERT INTO " + schema + ".LLOGUER VALUES (NEXT VALUE FOR Lloguer_Gen, )",
-                "INSERT INTO " + schema + ".LLOGUER VALUES (NEXT VALUE FOR Lloguer_Gen, )";
+                "INSERT INTO " + schema + ".LLOGUER VALUES (NEXT VALUE FOR Lloguer_Gen, '2023-01-01', '2024-02-02')",
+                "INSERT INTO " + schema + ".LLOGUER VALUES (NEXT VALUE FOR Lloguer_Gen, '2023-03-03', '2024-04-04')",
+                "INSERT INTO " + schema + ".LLOGUER VALUES (NEXT VALUE FOR Lloguer_Gen, '2023-05-05', '2024-06-06')",
+                "INSERT INTO " + schema + ".LLOGUER VALUES (NEXT VALUE FOR Lloguer_Gen, '2023-07-07', '2024-08-08')",
+                "INSERT INTO " + schema + ".LLOGUER VALUES (NEXT VALUE FOR Lloguer_Gen, '2023-09-09', '2024-10-10')";
+                //Botiga
+                //RebutLloguer
             };
             for (String datum : data) {
                 if (stmt.executeUpdate(datum)<=0) {
