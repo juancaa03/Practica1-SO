@@ -56,7 +56,7 @@
                 "INSERT INTO " + schema + ".LLOGUER (id, dataFi, dataInici, usuari_id, videojoc_id) VALUES (NEXT VALUE FOR Lloguer_Gen, '2024-10-10', '2023-09-09', 5, 1)",
                 //Botiga
                 //RebutLloguer (id, dataAlquiler, dataRetorn, preuTotal, usuari_id)
-                "INSERT INTO " + schema + ".REBUTLLOGUER (id, dataAlquiler, dataRetorn, preuTotal, usuari_id) VALUES (NEXT VALUE FOR RebutLloguer_Gen, '2024-12-')",
+                //"INSERT INTO " + schema + ".REBUTLLOGUER (id, dataAlquiler, dataRetorn, preuTotal, usuari_id) VALUES (NEXT VALUE FOR RebutLloguer_Gen, '2024-12-')",
             };
             for (String datum : data) {
                 if (stmt.executeUpdate(datum)<=0) {

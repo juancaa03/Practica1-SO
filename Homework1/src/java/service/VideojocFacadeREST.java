@@ -55,7 +55,7 @@ public class VideojocFacadeREST extends AbstractFacade<Videojoc> {
     
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
-    //@Secured
+    @Secured
     public Response addVideojoc(Videojoc videojoc) {
         try {
             // Verificar si el videojuego ya existe
