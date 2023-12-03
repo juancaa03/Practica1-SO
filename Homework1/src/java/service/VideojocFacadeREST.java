@@ -15,6 +15,8 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import model.entities.Videojoc;
 import authn.Secured;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.ws.rs.core.Response;
 
@@ -53,11 +55,11 @@ public class VideojocFacadeREST extends AbstractFacade<Videojoc> {
     
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
-    @Secured
+    //@Secured
     public Response addVideojoc(Videojoc videojoc) {
         try {
             // Verificar si el videojuego ya existe
-            if (videojoc.equals(videojoc)) {
+            if (existeixVideojoc(videojoc.getId())) {
                 return Response.status(Response.Status.CONFLICT).entity("El videojuego ya existe").build();
             }
 
@@ -72,6 +74,9 @@ public class VideojocFacadeREST extends AbstractFacade<Videojoc> {
         }
     }
     
+    private boolean existeixVideojoc(Long id) {
+        return em.find(Videojoc.class, id) != null;
+    }
     /*@GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
