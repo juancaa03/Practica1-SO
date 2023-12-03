@@ -29,7 +29,7 @@ public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
     }
     
     @GET
-    @Secured
+    //@Secured
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response find(@PathParam("id") Long id) {
@@ -39,7 +39,7 @@ public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
     //NO DICE NADA DE QUE TENGA QUE SER XML O JSON, igual hay que poner text/plain
     
     @GET
-    @Secured
+    //@Secured
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Lloguer> findAll() {

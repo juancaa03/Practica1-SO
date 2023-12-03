@@ -5,8 +5,7 @@
 package model.entities;
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.sql.Date;
 import java.util.Objects;
 
 @Entity
@@ -17,8 +16,8 @@ public class Lloguer implements Serializable{
     @Column(name = "id")
     private Long id;
     
-    private LocalDate dataInici;
-    private LocalDate dataFi;
+    private Date dataInici;
+    private Date dataFi;
 
     @ManyToOne
     @JoinColumn(name = "videojoc_id", nullable = false)
@@ -33,7 +32,7 @@ public class Lloguer implements Serializable{
         // Constructor por defecto
     }
 
-    public Lloguer(Videojoc videojoc, Usuari usuari, LocalDate dataInici, LocalDate dataFi) {
+    public Lloguer(Videojoc videojoc, Usuari usuari, Date dataInici, Date dataFi) {
         this.videojoc = videojoc;
         this.usuari = usuari;
         this.dataInici = dataInici;
@@ -48,19 +47,19 @@ public class Lloguer implements Serializable{
         this.id = id;
     }
 
-    public LocalDate getDataInici() {
+    public Date getDataInici() {
         return dataInici;
     }
 
-    public void setDataInici(LocalDate dataInici) {
+    public void setDataInici(Date dataInici) {
         this.dataInici = dataInici;
     }
 
-    public LocalDate getDataFi() {
+    public Date getDataFi() {
         return dataFi;
     }
 
-    public void setDataFi(LocalDate dataFi) {
+    public void setDataFi(Date dataFi) {
         this.dataFi = dataFi;
     }
 
@@ -96,20 +95,5 @@ public class Lloguer implements Serializable{
     public int hashCode() {
         return Objects.hash(id, dataInici, dataFi, videojoc, usuari);
     }
-    
-    public long calcularDuracioAlquiler() {
-    return ChronoUnit.DAYS.between(dataInici, dataFi);
-    }
-    
-    public double calcularCostAlquiler() {
-    long duracio = calcularDuracioAlquiler();
-    return duracio * videojoc.getPreuLloguer();
-    }
-    
-    public boolean estaActiu() {
-    LocalDate avui = LocalDate.now();
-    return avui.isAfter(dataInici) && avui.isBefore(dataFi.plusDays(1));
-    }
-    
     
 }

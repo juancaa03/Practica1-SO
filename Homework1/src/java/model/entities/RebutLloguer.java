@@ -10,16 +10,17 @@ import java.util.Objects;
 
 @Entity
 public class RebutLloguer implements Serializable{
+    @SequenceGenerator(name="RebutLloguer_Gen", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RebutLloguer_Gen")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
     @ManyToOne
     private Usuari usuari; // Usuario asociado al recibo
 
-    @ManyToOne
-    private CistellaLloguer cistella; // Cesta asociada al recibo
+    //@ManyToOne
+    //private CistellaLloguer cistella; // Cesta asociada al recibo
 
     private double preuTotal;
     private LocalDateTime dataAlquiler;
@@ -41,13 +42,13 @@ public class RebutLloguer implements Serializable{
         this.usuari = usuari;
     }
 
-    public CistellaLloguer getCistella() {
+    /*public CistellaLloguer getCistella() {
         return cistella;
     }
 
     public void setCistella(CistellaLloguer cistella) {
         this.cistella = cistella;
-    }
+    }*/
 
     public double getPreuTotal() {
         return preuTotal;
@@ -80,14 +81,13 @@ public class RebutLloguer implements Serializable{
         RebutLloguer that = (RebutLloguer) o;
         return Double.compare(that.preuTotal, preuTotal) == 0 &&
                 Objects.equals(usuari, that.usuari) &&
-                Objects.equals(cistella, that.cistella) &&
                 Objects.equals(dataAlquiler, that.dataAlquiler) &&
                 Objects.equals(dataRetorn, that.dataRetorn);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(usuari, cistella, preuTotal, dataAlquiler, dataRetorn);
+        return Objects.hash(usuari, preuTotal, dataAlquiler, dataRetorn);
     }
     
     
