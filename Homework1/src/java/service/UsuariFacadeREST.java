@@ -66,10 +66,10 @@ public class UsuariFacadeREST extends AbstractFacade<Usuari> {
         String email = newCustData.getCorreu();
         String password = newCustData.getContrasenya();
         
-        if(userName == null || email == null || password == null)
+        /*if(userName == null || email == null || password == null)
             return Response.status(Response.Status.BAD_REQUEST).entity("Parameter/s missing.").build();
         if(userName.isEmpty() || email.isEmpty() || password.isEmpty())
-            return Response.status(Response.Status.BAD_REQUEST).entity("Cannot have empty fields.").build();
+            return Response.status(Response.Status.BAD_REQUEST).entity("Cannot have empty fields.").build();*/
         
         cust.setNomUsuari(userName);
         cust.setCorreu(email);

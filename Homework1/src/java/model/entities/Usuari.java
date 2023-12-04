@@ -20,7 +20,7 @@ public class Usuari implements Serializable{
     private Long id;
 
     private String nomUsuari, correu;
-    
+    @JsonbTransient
     private String contrasenya;
 
     @OneToMany(mappedBy = "usuari")
