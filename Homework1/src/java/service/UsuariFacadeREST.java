@@ -56,7 +56,7 @@ public class UsuariFacadeREST extends AbstractFacade<Usuari> {
     
     @PUT
     @Path("{id}")
-    //@Secured
+    @Secured
     @Consumes({MediaType.APPLICATION_JSON})
     public Response updateCustomer(@PathParam("id") Long id, Usuari newCustData) {
         Usuari cust = em.find(Usuari.class, id);
