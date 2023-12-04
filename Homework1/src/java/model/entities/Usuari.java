@@ -20,7 +20,7 @@ public class Usuari implements Serializable{
     private Long id;
 
     private String nomUsuari, correu;
-    @JsonbTransient
+    
     private String contrasenya;
 
     @OneToMany(mappedBy = "usuari")
@@ -56,7 +56,7 @@ public class Usuari implements Serializable{
         this.nomUsuari = nomUsuari;
     }
     
-    
+    //@JsonbTransient
     public String getContrasenya() {
         return contrasenya;
     }

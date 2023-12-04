@@ -39,11 +39,11 @@
                 //Credentials (username, password)
                 "INSERT INTO " + schema + ".CREDENTIALS VALUES (NEXT VALUE FOR CREDENTIALS_GEN, 'sob', 'sob')",
                 //Usuaris (id, nomUsuari, contrasenya, correu)
-                "INSERT INTO " + schema + ".USUARI VALUES (NEXT VALUE FOR Usuari_Gen, 'MarcJimenez', 'marc123', 'marcj16@gmail.com')",
-                "INSERT INTO " + schema + ".USUARI VALUES (NEXT VALUE FOR Usuari_Gen, 'CarlosEscrit', 'carlos123', 'carlos12@gmail.com')",
-                "INSERT INTO " + schema + ".USUARI VALUES (NEXT VALUE FOR Usuari_Gen, 'JuancaAlonso', 'juanca123', 'juanca8@gmail.com')",
-                "INSERT INTO " + schema + ".USUARI VALUES (NEXT VALUE FOR Usuari_Gen, 'AbrilGuzman', 'abril123', 'abril8@gmail.com')",
-                "INSERT INTO " + schema + ".USUARI VALUES (NEXT VALUE FOR Usuari_Gen, 'CocoIbbie', 'coco123', 'coco8@gmail.com')",
+                "INSERT INTO " + schema + ".USUARI (id, nomUsuari, contrasenya, correu) VALUES (NEXT VALUE FOR Usuari_Gen, 'MarcJimenez', 'marc123', 'marcj16@gmail.com')",
+                "INSERT INTO " + schema + ".USUARI (id, nomUsuari, contrasenya, correu) VALUES (NEXT VALUE FOR Usuari_Gen, 'CarlosEscrit', 'carlos123', 'carlos12@gmail.com')",
+                "INSERT INTO " + schema + ".USUARI (id, nomUsuari, contrasenya, correu) VALUES (NEXT VALUE FOR Usuari_Gen, 'JuancaAlonso', 'juanca123', 'juanca8@gmail.com')",
+                "INSERT INTO " + schema + ".USUARI (id, nomUsuari, contrasenya, correu) VALUES (NEXT VALUE FOR Usuari_Gen, 'AbrilGuzman', 'abril123', 'abril8@gmail.com')",
+                "INSERT INTO " + schema + ".USUARI (id, nomUsuari, contrasenya, correu) VALUES (NEXT VALUE FOR Usuari_Gen, 'CocoIbbie', 'coco123', 'coco8@gmail.com')",
                 //Videojoc (id, nom, videoconsola, disponibilitat, preuLloguer, descripcio, tipus, adrecaBotigues)
                 "INSERT INTO " + schema + ".VIDEOJOC (id, nom, videoconsola, disponibilitat, preuLloguer, descripcio, tipus, adrecaBotigues) VALUES (NEXT VALUE FOR Videojoc_Gen, 'Super Mario Land', 'Game Boy', 1, 10.99, 'Clásico juego de plataformas', 'Plataforma', 'The Retro Games Store- pl. del Blat 3- Valls- 43800')",
                 "INSERT INTO " + schema + ".VIDEOJOC (id, nom, videoconsola, disponibilitat, preuLloguer, descripcio, tipus, adrecaBotigues) VALUES (NEXT VALUE FOR Videojoc_Gen, 'Quake', 'PC', 0, 15.99, 'Juego de acción en primera persona', 'Acción', 'Game Haven- Calle de Ejemplo 123- Ciudad- 12345')",
