@@ -56,7 +56,7 @@ public class UsuariFacadeREST extends AbstractFacade<Usuari> {
     
     @PUT
     @Path("{id}")
-    @Secured
+    //@Secured
     @Consumes({MediaType.APPLICATION_JSON})
     public Response updateCustomer(@PathParam("id") Long id, Usuari newCustData) {
         Usuari cust = em.find(Usuari.class, id);
@@ -66,10 +66,8 @@ public class UsuariFacadeREST extends AbstractFacade<Usuari> {
         String email = newCustData.getCorreu();
         String password = newCustData.getContrasenya();
         
-        /*if(userName == null || email == null || password == null)
-            return Response.status(Response.Status.BAD_REQUEST).entity("Parameter/s missing.").build();
-        if(userName.isEmpty() || email.isEmpty() || password.isEmpty())
-            return Response.status(Response.Status.BAD_REQUEST).entity("Cannot have empty fields.").build();*/
+        if("".equals(userName) || "".equals(email) || "".equals(password) || " ".equals(userName) || " ".equals(email) || " ".equals(password))
+            return Response.status(Response.Status.BAD_REQUEST).entity("Falta algun parametre o no pot ser null.").build();
         
         cust.setNomUsuari(userName);
         cust.setCorreu(email);
