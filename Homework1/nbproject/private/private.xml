@@ -3,13 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/SO/Practica1-SO/Homework1/src/java/service/VideojocFacadeREST.java</file>
             <file>file:/C:/SO/Practica1-SO/Homework1/src/java/model/entities/Lloguer.java</file>
             <file>file:/C:/SO/Practica1-SO/Homework1/src/java/model/entities/Botiga.java</file>
+            <file>file:/C:/SO/Practica1-SO/Homework1/test/resources/sql/bdso.sql</file>
             <file>file:/C:/SO/Practica1-SO/Homework1/src/java/model/entities/Usuari.java</file>
             <file>file:/C:/SO/Practica1-SO/Homework1/src/java/service/LloguerFacadeREST.java</file>
-            <file>file:/C:/SO/Practica1-SO/Homework1/src/java/model/entities/RebutLloguer.java</file>
             <file>file:/C:/SO/Practica1-SO/Homework1/src/java/model/entities/Videojoc.java</file>
             <file>file:/C:/SO/Practica1-SO/Homework1/web/install.jsp</file>
+            <file>file:/C:/SO/Practica1-SO/Homework1/src/java/service/UsuariFacadeREST.java</file>
         </group>
     </open-files>
 </project-private>

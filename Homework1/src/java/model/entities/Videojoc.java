@@ -36,11 +36,6 @@ public class Videojoc implements Serializable{
     @OneToMany(mappedBy = "videojoc")
     private List<Lloguer> lloguers;
 
-    @ManyToOne
-    @JoinColumn(name = "botiga_id")
-    private Botiga botiga;
-
-    
     // Constructores
     public Videojoc() {
         // Constructor por defecto
