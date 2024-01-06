@@ -59,7 +59,7 @@ public class VideojocFacadeREST extends AbstractFacade<Videojoc> {
     public Response addVideojoc(Videojoc videojoc) {
         try {
             // Verificar si el videojuego ya existe
-            if (existeixVideojoc(videojoc.getId())) {
+            if (existeixVideojoc(videojoc.getNom())) {
                 return Response.status(Response.Status.CONFLICT).entity("El videojuego ya existe").build();
             }
 
@@ -74,8 +74,12 @@ public class VideojocFacadeREST extends AbstractFacade<Videojoc> {
         }
     }
     
-    private boolean existeixVideojoc(Long id) {
-        return em.find(Videojoc.class, id) != null;
+    private boolean existeixVideojoc(String nom) {
+        TypedQuery<Long> query = em.createQuery(
+                "SELECT COUNT(v) FROM Videojoc v WHERE v.nom = :nom", Long.class)
+                .setParameter("nom", nom);
+        
+        return query.getSingleResult() > 0;
     }
     /*@GET
     @Override
