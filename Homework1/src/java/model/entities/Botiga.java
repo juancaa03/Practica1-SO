@@ -17,7 +17,7 @@ public class Botiga implements Serializable{
     private String nom;
     private String adreca;
     
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "videojoc_id")
     private Videojoc videojoc;
 
