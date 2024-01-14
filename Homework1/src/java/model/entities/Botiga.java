@@ -5,6 +5,7 @@
 package model.entities;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,8 +19,12 @@ public class Botiga implements Serializable{
     private String adreca;
     
     @ManyToMany
-    @JoinColumn(name = "videojoc_id")
-    private Videojoc videojoc;
+    @JoinTable(
+        name = "botiga_videojoc",
+        joinColumns = @JoinColumn(name = "botiga_id"),
+        inverseJoinColumns = @JoinColumn(name = "videojoc_id")
+    )
+    private List<Videojoc> videojocs;
 
     public Botiga(){
         //Constructor per defecte
@@ -54,12 +59,12 @@ public class Botiga implements Serializable{
         this.adreca = adreca;
     }
 
-    public Videojoc getVideojoc() {
-        return videojoc;
+    public List<Videojoc> getVideojocs() {
+        return videojocs;
     }
 
-    public void setVideojoc(Videojoc videojoc) {
-        this.videojoc = videojoc;
+    public void setVideojocs(List<Videojoc> videojocs) {
+        this.videojocs = videojocs;
     }
     
     @Override
@@ -70,12 +75,12 @@ public class Botiga implements Serializable{
         return Objects.equals(Id, botiga.Id) &&
                 Objects.equals(nom, botiga.nom) &&
                 Objects.equals(adreca, botiga.adreca) &&
-                Objects.equals(videojoc, botiga.videojoc);
+                Objects.equals(videojocs, botiga.videojocs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, nom, adreca, videojoc);
+        return Objects.hash(Id, nom, adreca, videojocs);
     }
     
 }

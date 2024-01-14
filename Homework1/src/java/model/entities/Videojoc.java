@@ -36,6 +36,9 @@ public class Videojoc implements Serializable{
     @OneToMany(mappedBy = "videojoc")
     private List<Lloguer> lloguers;
 
+    @ManyToMany(mappedBy = "videojocs")
+    private List<Botiga> botigues;
+        
     // Constructores
     public Videojoc() {
         // Constructor por defecto
@@ -105,6 +108,14 @@ public class Videojoc implements Serializable{
                 Objects.equals(descripcio, videojoc.descripcio) &&
                 Objects.equals(tipus, videojoc.tipus) &&
                 Objects.equals(adrecaBotigues, videojoc.adrecaBotigues);
+    }
+    
+    public List<Botiga> getBotigues() {
+        return botigues;
+    }
+
+    public void setBotigues(List<Botiga> botigues) {
+        this.botigues = botigues;
     }
     
     @Override
