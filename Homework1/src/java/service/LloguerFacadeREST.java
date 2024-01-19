@@ -15,7 +15,12 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import model.entities.Lloguer;
 import authn.Secured;
+import jakarta.transaction.Transactional;
+import jakarta.ws.rs.HeaderParam;
 import jakarta.ws.rs.core.Response;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import model.entities.Usuari;
 
 @Stateless
 @Path("rest/api/v1/lloguer")
@@ -36,7 +41,6 @@ public class LloguerFacadeREST extends AbstractFacade<Lloguer> {
         return Response.ok().entity(super.find(id)).build();
     }
     
-
     
     @GET
     @Secured
