@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/34622/OneDrive/Documentos/GitHub/Practica1-SO/Homework1/src/java/model/entities/Videojoc.java</file>
-            <file>file:/C:/Users/34622/OneDrive/Documentos/GitHub/Practica1-SO/Homework1/src/java/model/entities/Botiga.java</file>
-            <file>file:/C:/Users/34622/OneDrive/Documentos/GitHub/Practica1-SO/Homework1/src/java/model/entities/Lloguer.java</file>
-            <file>file:/C:/Users/34622/OneDrive/Documentos/GitHub/Practica1-SO/Homework1/src/java/service/LloguerFacadeREST.java</file>
-            <file>file:/C:/Users/34622/OneDrive/Documentos/GitHub/Practica1-SO/Homework1/src/java/service/VideojocFacadeREST.java</file>
-            <file>file:/C:/Users/34622/OneDrive/Documentos/GitHub/Practica1-SO/Homework1/src/java/service/RESTapp.java</file>
-            <file>file:/C:/Users/34622/OneDrive/Documentos/GitHub/Practica1-SO/Homework1/src/java/service/UsuariFacadeREST.java</file>
-            <file>file:/C:/Users/34622/OneDrive/Documentos/GitHub/Practica1-SO/Homework1/src/java/model/entities/RebutLloguer.java</file>
-            <file>file:/C:/Users/34622/OneDrive/Documentos/GitHub/Practica1-SO/Homework1/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/34622/OneDrive/Documentos/GitHub/Practica1-SO/Homework1/src/java/model/entities/Usuari.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
