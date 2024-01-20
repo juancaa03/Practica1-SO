@@ -94,6 +94,24 @@ public class Videojoc implements Serializable{
     public void setPreuLloguer(double preuLloguer) {
         this.preuLloguer = preuLloguer;
     }
+
+    public String getDescripcio() {
+        return descripcio;
+    }
+
+    public void setDescripcio(String descripcio) {
+        this.descripcio = descripcio;
+    }
+
+    public String getTipus() {
+        return tipus;
+    }
+
+    public void setTipus(String tipus) {
+        this.tipus = tipus;
+    }
+    
+    
     
     @Override
     public boolean equals(Object o) {
