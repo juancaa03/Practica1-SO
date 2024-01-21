@@ -110,6 +110,14 @@ public class Videojoc implements Serializable{
     public void setTipus(String tipus) {
         this.tipus = tipus;
     }
+
+    public String getAdrecaBotigues() {
+        return adrecaBotigues;
+    }
+
+    public void setAdrecaBotigues(String adrecaBotigues) {
+        this.adrecaBotigues = adrecaBotigues;
+    }
     
     
     

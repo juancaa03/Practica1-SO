@@ -6,6 +6,7 @@ package model.entities;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+//import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +19,8 @@ public class Lloguer implements Serializable{
     
     private Date dataInici;
     private Date dataFi;
+    
+    private double preuTotal;
 
     @ManyToOne
     @JoinColumn(name = "videojoc_id", nullable = false)
@@ -32,11 +35,12 @@ public class Lloguer implements Serializable{
         // Constructor por defecto
     }
 
-    public Lloguer(Videojoc videojoc, Usuari usuari, Date dataInici, Date dataFi) {
+    public Lloguer(Videojoc videojoc, Usuari usuari, Date dataInici, Date dataFi, double preuTotal) {
         this.videojoc = videojoc;
         this.usuari = usuari;
         this.dataInici = dataInici;
         this.dataFi = dataFi;
+        this.preuTotal = preuTotal;
     }
 
     public Long getId() {
@@ -77,6 +81,14 @@ public class Lloguer implements Serializable{
 
     public void setUsuari(Usuari usuari) {
         this.usuari = usuari;
+    }
+
+    public double getPreuTotal() {
+        return preuTotal;
+    }
+
+    public void setPreuTotal(double preuTotal) {
+        this.preuTotal = preuTotal;
     }
     
     @Override
