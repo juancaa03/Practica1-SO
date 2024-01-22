@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.Base64;
 import java.util.Calendar;
 import model.entities.LloguerRequest;
+import model.entities.RebutLloguer;
 import model.entities.Usuari;
 import model.entities.Videojoc;
 
@@ -92,10 +93,11 @@ public Response rentVideojocs(LloguerRequest lloguerRequest) {
         lloguer.setDataFi(new java.sql.Date(dataFi.getTime()));
         lloguer.setPreuTotal(precioTotal);
         em.persist(lloguer);
-
+        
+        RebutLloguer rebut = new RebutLloguer(lloguer.getId(), lloguer.getDataInici(), lloguer.getDataFi(), lloguer.getPreuTotal());
         // Devolver la respuesta con el identificador del lloguer y el precio total
         return Response.status(Response.Status.CREATED)
-                .entity("Lloguer creat amb identificador: " + lloguer.getId() + ", Preu total: " + precioTotal + ", Data Retorn: " + lloguer.getDataFi())
+                .entity(rebut)
                 .build();
     } catch (Exception e) {
         // Manejar la excepción y devolver el código de error correspondiente
