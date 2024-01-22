@@ -4,8 +4,10 @@
  */
 package model.entities;
 
+import java.io.Serializable;
 
-public class LloguerRequest {
+
+public class LloguerRequest implements Serializable{
     private Videojoc videojoc;
     private Usuari usuari;
 
