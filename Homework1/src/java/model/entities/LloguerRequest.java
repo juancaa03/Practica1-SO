@@ -9,6 +9,14 @@ public class LloguerRequest {
     private Videojoc videojoc;
     private Usuari usuari;
 
+    public LloguerRequest() {
+    }
+
+    
+    public LloguerRequest(Videojoc videojoc, Usuari usuari) {
+        this.videojoc = videojoc;
+        this.usuari = usuari;
+    }
 
     public Videojoc getVideojoc() {
         return videojoc;
